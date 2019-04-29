@@ -1,6 +1,7 @@
-console.log("Hello from JavaScript index.js file");
+console.log("Hello");
 
 const mapboxgl = require("mapbox-gl");
+const buildMarker = require("./marker")
 
 mapboxgl.accessToken = 'pk.eyJ1IjoicGRlYm9lciIsImEiOiJjanYyajZmdHIyNTFsNDRzZDM4OHdmbTl5In0.c-CIGwdq2Kq9p1ZhZTO0Zw';
 
@@ -11,10 +12,12 @@ const map = new mapboxgl.Map({
   style: "mapbox://styles/mapbox/streets-v10" // mapbox has lots of different map styles available.
 });
 
+const marker = buildMarker("restaurants", [-87.6354, 41.8885]); // or [-87.6354, 41.8885]
+marker.addTo(map);
 
-const markerDomEl = document.createElement("div"); // Create a new, detached DIV
-markerDomEl.style.width = "32px";
-markerDomEl.style.height = "39px";
-markerDomEl.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
+// const markerDomEl = document.createElement("div"); // Create a new, detached DIV
+// markerDomEl.style.width = "32px";
+// markerDomEl.style.height = "39px";
+// markerDomEl.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
 
-new mapboxgl.Marker(markerDomEl).setLngLat([-87.641, 41.895]).addTo(map); // [-87.641, 41.895] for Chicago
+// new mapboxgl.Marker(markerDomEl).setLngLat([-87.641, 41.895]).addTo(map); // [-87.641, 41.895] for Chicago
